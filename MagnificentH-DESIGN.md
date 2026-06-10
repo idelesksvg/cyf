@@ -196,18 +196,18 @@ The page also contains a **"Creative Implementation / Testing"** section (Rubik'
 
 ## 9. Responsive Breakpoints — Search Results Card Grid
 
-The card grid on browse/search views (e.g. [Architecture spaces](https://spaces.magnificenth.com/s?pub_categoryLevel1=architecture)) is mobile-first and scales from 1 to 3 columns as the viewport widens, working alongside the filters/map side panel. This is reverse-engineered from the live implementation (`SearchResultsPanel` card grid) and is the current de facto standard until it is formalized in the Figma library.
+The card grid on browse/search views (e.g. [Architecture spaces](https://spaces.magnificenth.com/s?pub_categoryLevel1=architecture)) is mobile-first and scales from 1 to 4 columns as the viewport widens. This is reverse-engineered from the live implementation (`SearchResultsPanel_listingCards` grid) and is the current de facto standard until it is formalized in the Figma library.
 
 | Breakpoint | Min-width | Sharetribe common name | Container width | MagnificentH card-grid columns |
 |---|---|---|---|---|
-| Mobile | 320px | — (base styles, no media query) | Full viewport width (map hidden; list panel fills the screen, with side padding) | 1 |
-| Tablet | 768px | `--viewportMedium` | ~50% of the main content area (map panel shown alongside the list) | 1 |
-| Desktop | 1024px | `--viewportLarge` | ~62.5% of the main content area, capped at 1800px max-width | 2 |
-| Wide | 1921px | `--viewportXLarge` | ~62.5% of the main content area, capped at 1800px max-width | 3 |
+| Mobile | 320px | — (base styles, no media query) | Full width of the main content area (filters in mobile modal, no side column) | 1 |
+| Tablet | 768px | `--viewportMedium` | Full width of the main content area, minus the ~210px filter column | 2 |
+| Desktop | 1024px | `--viewportLarge` | Full width of the main content area, minus the ~240px filter column | 3 |
+| Wide | 1500px | — (custom value, not a standard Sharetribe name) | Same as Desktop | 4 |
 
-> **Naming note (pending team confirmation):** the **min-width values** (768px, 1024px, 1921px) come directly from the live production CSS (`SearchResultsPanel_listingCardsMapVariant`); 320px is the conventional minimum supported mobile viewport, applied via base styles before any media query. The **breakpoint labels** "Mobile / Tablet / Desktop / Wide" are descriptive names added for this doc, not pulled from source. The **Sharetribe common name** column reflects this template's conventional custom-media-query names (`src/styles/customMediaQueries.css`) for these same min-widths. If the dev team confirms these (or other) names from the marketplace source repo, update this table to use the official names instead.
+> **Naming note (pending team confirmation):** the **min-width values** (768px, 1024px, 1500px) come directly from the live production CSS (`SearchResultsPanel_listingCards`); 320px is the conventional minimum supported mobile viewport, applied via base styles before any media query. Note the grid actually reaches 2 columns slightly earlier, at 550px (`--viewportSmall`) — 768px is shown here as it's the more common "tablet" reference point and the column count doesn't change again until 1024px. The **breakpoint labels** "Mobile / Tablet / Desktop / Wide" are descriptive names added for this doc, not pulled from source. The **Sharetribe common name** column reflects this template's conventional custom-media-query names (`src/styles/customMediaQueries.css`) for these same min-widths. The **4-column "Wide" tier (1500px+) is unconfirmed** — please verify on a screen ≥1500px wide, since it wasn't part of the original observation (2 on tablet, 3 on desktop at 1440px). If the dev team confirms these (or other) names/values from the marketplace source repo, update this table accordingly.
 
-**When designing a new view:** for any card grid (search results, collections, editions), follow this mobile-first progression — 1 column by default, 2 columns from 1024px, 3 columns from 1921px when a side panel (filters or map) is present. Do not introduce additional breakpoints or column counts without first checking the live implementation and updating the Figma library so this table stays accurate.
+**When designing a new view:** for any card grid (search results, collections, editions), follow this mobile-first progression — 1 column by default, 2 columns from 768px, 3 columns from 1024px, and 4 columns from 1500px on very wide screens. Do not introduce additional breakpoints or column counts without first checking the live implementation and updating the Figma library so this table stays accurate.
 
 ---
 
@@ -233,4 +233,4 @@ When asked to design or review a view, apply this checklist:
 8. Does any elevated surface reuse the documented shadow token instead of a new one?
 9. Is the correct logo variant (Light/Dark/Multi) used for the background it sits on, pulled from the Figma library rather than recreated?
 10. If a spacing/grid/component need arises, has it been raised to add to the Figma library rather than improvised?
-11. Does any card grid follow the responsive breakpoints in Section 9 (1 column by default, 2 from 1024px, 3 from 1921px)?
+11. Does any card grid follow the responsive breakpoints in Section 9 (1 column by default, 2 from 768px, 3 from 1024px, 4 from 1500px)?
