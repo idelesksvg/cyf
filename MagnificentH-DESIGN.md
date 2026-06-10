@@ -194,9 +194,24 @@ The page also contains a **"Creative Implementation / Testing"** section (Rubik'
 
 ---
 
-## 9. Spacing, Grid & Components — Not Yet Defined
+## 9. Responsive Breakpoints — Search Results Card Grid
 
-The Figma library currently documents **brand identity only** (colors, typography, shared shadow effect, and logo lockups). It does **not** yet define a spacing scale, layout grid/breakpoints, or a UI component library (buttons, inputs, cards, etc.).
+The card grid on browse/search views (e.g. [Architecture spaces](https://spaces.magnificenth.com/s?pub_categoryLevel1=architecture)) is mobile-first and scales from 1 to 3 columns as the viewport widens, working alongside the filters/map side panel. This is reverse-engineered from the live implementation (`SearchResultsPanel` card grid) and is the current de facto standard until it is formalized in the Figma library.
+
+| Breakpoint | Min-width | Container width | MagnificentH card-grid columns |
+|---|---|---|---|
+| Mobile | 0px | Full viewport width (map hidden; list panel fills the screen, with side padding) | 1 |
+| Tablet | 768px | ~50% of the main content area (map panel shown alongside the list) | 1 |
+| Desktop | 1024px | ~62.5% of the main content area, capped at 1800px max-width | 2 |
+| Wide | 1921px | ~62.5% of the main content area, capped at 1800px max-width | 3 |
+
+**When designing a new view:** for any card grid (search results, collections, editions), follow this mobile-first progression — 1 column by default, 2 columns from 1024px, 3 columns from 1921px when a side panel (filters or map) is present. Do not introduce additional breakpoints or column counts without first checking the live implementation and updating the Figma library so this table stays accurate.
+
+---
+
+## 10. Spacing, Grid & Components — Not Yet Defined
+
+The Figma library currently documents **brand identity only** (colors, typography, shared shadow effect, and logo lockups). It does **not** yet define a spacing scale, layout grid, or a UI component library (buttons, inputs, cards, etc.) — aside from the card-grid breakpoints in Section 9, which were derived from the live site.
 
 **When designing a new view:** until these are added to the Figma library, do not invent ad-hoc spacing or component conventions in this document. If a spacing scale, grid, or component set is needed, define it in Figma first (e.g. as a new page in the MagnificentH library), then mirror it here so the doc stays a faithful reflection of the source of truth.
 
@@ -216,3 +231,4 @@ When asked to design or review a view, apply this checklist:
 8. Does any elevated surface reuse the documented shadow token instead of a new one?
 9. Is the correct logo variant (Light/Dark/Multi) used for the background it sits on, pulled from the Figma library rather than recreated?
 10. If a spacing/grid/component need arises, has it been raised to add to the Figma library rather than improvised?
+11. Does any card grid follow the responsive breakpoints in Section 9 (1 column by default, 2 from 1024px, 3 from 1921px)?
