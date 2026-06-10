@@ -98,9 +98,27 @@ All colors below are defined as variables/tokens in the Figma library and must b
 
 ## 5. Logo & Brand Mark
 
-The canonical logo, logomark, and symbol variations live on the **Logos and symbols** page of the [MagnificentH Figma Design Library](https://www.figma.com/design/z4YHGaWIWUFUnLw9CtYhDs/MagnificentH-library). This page also contains creative/test implementations (e.g. mockup explorations) — these are references for ideation only and are not approved for production use unless promoted to the core library.
+The canonical logo, logomark, and symbol variations live on the **Logos and symbols** page of the [MagnificentH Figma Design Library](https://www.figma.com/design/z4YHGaWIWUFUnLw9CtYhDs/MagnificentH-library), under the **"Official Logos"** and **"For web"** sections.
 
-**When designing a new view:** always pull the logo/logomark asset directly from the Figma library rather than re-exporting or recreating it, so updates to the brand mark propagate consistently.
+| Asset | Variants |
+|---|---|
+| **Logo full** (full lockup) | `Color=Light`, `Color=Dark` |
+| **Logo text** (wordmark only) | `Color=Light`, `Color=Dark` |
+| **Logo mini** (compact mark) | `Color=Multi`, `Color=Color4`, `Color=Light`, `Color=Dark` |
+| **Logomark** (symbol only) | single mark, used in "For web" medium logo lockups |
+| **Favicon** | square icon + rounded "Faviconmini" tile |
+
+The page also contains a **"Creative Implementation / Testing"** section (Rubik's Cube explorations, etc.) — these are ideation references only and are not approved for production use unless promoted into the "Official Logos" / "For web" sections.
+
+**When designing a new view:** always pull the logo/logomark asset directly from the Figma library rather than re-exporting or recreating it, so updates to the brand mark propagate consistently. Choose the `Light`/`Dark`/`Multi` variant based on the background color per the Color System above (e.g. `Color=Dark` on light/white backgrounds, `Color=Light` on dark or saturated backgrounds).
+
+---
+
+## 6. Spacing, Grid & Components — Not Yet Defined
+
+The Figma library currently documents **brand identity only** (colors, typography, shared shadow effect, and logo lockups). It does **not** yet define a spacing scale, layout grid/breakpoints, or a UI component library (buttons, inputs, cards, etc.).
+
+**When designing a new view:** until these are added to the Figma library, do not invent ad-hoc spacing or component conventions in this document. If a spacing scale, grid, or component set is needed, define it in Figma first (e.g. as a new page in the MagnificentH library), then mirror it here so the doc stays a faithful reflection of the source of truth.
 
 ---
 
@@ -113,4 +131,5 @@ When asked to design or review a view, apply this checklist:
 3. Are colors referenced by token name from the palettes above, not arbitrary hex values?
 4. Is the Error palette used only for error/validation states?
 5. Does any elevated surface reuse the documented shadow token instead of a new one?
-6. Is the logo/logomark pulled from the Figma library rather than recreated?
+6. Is the correct logo variant (Light/Dark/Multi) used for the background it sits on, pulled from the Figma library rather than recreated?
+7. If a spacing/grid/component need arises, has it been raised to add to the Figma library rather than improvised?
