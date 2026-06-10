@@ -205,6 +205,8 @@ The card grid on browse/search views (e.g. [Architecture spaces](https://spaces.
 | Desktop | 1024px | ~62.5% of the main content area, capped at 1800px max-width | 2 |
 | Wide | 1921px | ~62.5% of the main content area, capped at 1800px max-width | 3 |
 
+> **Naming note (pending team confirmation):** the **min-width values** (768px, 1024px, 1921px) come directly from the live production CSS (`SearchResultsPanel_listingCardsMapVariant`). The **breakpoint labels** "Mobile / Tablet / Desktop / Wide" are descriptive names added for this doc, not pulled from source. This site is built on the Sharetribe Web Template, which conventionally names these same min-widths `--viewportMedium` (768px), `--viewportLarge` (1024px), and `--viewportXLarge` (1921px) in `src/styles/customMediaQueries.css`. If the dev team confirms these (or other) names from the marketplace source repo, update this table to use the official names instead.
+
 **When designing a new view:** for any card grid (search results, collections, editions), follow this mobile-first progression — 1 column by default, 2 columns from 1024px, 3 columns from 1921px when a side panel (filters or map) is present. Do not introduce additional breakpoints or column counts without first checking the live implementation and updating the Figma library so this table stays accurate.
 
 ---
