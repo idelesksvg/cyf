@@ -198,14 +198,14 @@ The page also contains a **"Creative Implementation / Testing"** section (Rubik'
 
 The card grid on browse/search views (e.g. [Architecture spaces](https://spaces.magnificenth.com/s?pub_categoryLevel1=architecture)) is mobile-first and scales from 1 to 3 columns as the viewport widens, working alongside the filters/map side panel. This is reverse-engineered from the live implementation (`SearchResultsPanel` card grid) and is the current de facto standard until it is formalized in the Figma library.
 
-| Breakpoint | Min-width | Container width | MagnificentH card-grid columns |
-|---|---|---|---|
-| Mobile | 0px | Full viewport width (map hidden; list panel fills the screen, with side padding) | 1 |
-| Tablet | 768px | ~50% of the main content area (map panel shown alongside the list) | 1 |
-| Desktop | 1024px | ~62.5% of the main content area, capped at 1800px max-width | 2 |
-| Wide | 1921px | ~62.5% of the main content area, capped at 1800px max-width | 3 |
+| Breakpoint | Min-width | Sharetribe common name | Container width | MagnificentH card-grid columns |
+|---|---|---|---|---|
+| Mobile | 320px | — (base styles, no media query) | Full viewport width (map hidden; list panel fills the screen, with side padding) | 1 |
+| Tablet | 768px | `--viewportMedium` | ~50% of the main content area (map panel shown alongside the list) | 1 |
+| Desktop | 1024px | `--viewportLarge` | ~62.5% of the main content area, capped at 1800px max-width | 2 |
+| Wide | 1921px | `--viewportXLarge` | ~62.5% of the main content area, capped at 1800px max-width | 3 |
 
-> **Naming note (pending team confirmation):** the **min-width values** (768px, 1024px, 1921px) come directly from the live production CSS (`SearchResultsPanel_listingCardsMapVariant`). The **breakpoint labels** "Mobile / Tablet / Desktop / Wide" are descriptive names added for this doc, not pulled from source. This site is built on the Sharetribe Web Template, which conventionally names these same min-widths `--viewportMedium` (768px), `--viewportLarge` (1024px), and `--viewportXLarge` (1921px) in `src/styles/customMediaQueries.css`. If the dev team confirms these (or other) names from the marketplace source repo, update this table to use the official names instead.
+> **Naming note (pending team confirmation):** the **min-width values** (768px, 1024px, 1921px) come directly from the live production CSS (`SearchResultsPanel_listingCardsMapVariant`); 320px is the conventional minimum supported mobile viewport, applied via base styles before any media query. The **breakpoint labels** "Mobile / Tablet / Desktop / Wide" are descriptive names added for this doc, not pulled from source. The **Sharetribe common name** column reflects this template's conventional custom-media-query names (`src/styles/customMediaQueries.css`) for these same min-widths. If the dev team confirms these (or other) names from the marketplace source repo, update this table to use the official names instead.
 
 **When designing a new view:** for any card grid (search results, collections, editions), follow this mobile-first progression — 1 column by default, 2 columns from 1024px, 3 columns from 1921px when a side panel (filters or map) is present. Do not introduce additional breakpoints or column counts without first checking the live implementation and updating the Figma library so this table stays accurate.
 
