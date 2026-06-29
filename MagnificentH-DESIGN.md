@@ -201,7 +201,7 @@ The card grid on browse/search views (e.g. [Architecture spaces](https://spaces.
 | Breakpoint | Min-width | Sharetribe common name | Container width | MagnificentH card-grid columns |
 |---|---|---|---|---|
 | Mobile | 320px | — (base styles, no media query) | Full width of the main content area (filters in mobile modal, no side column) | 1 |
-| Tablet | 768px | `--viewportMedium` | Full width of the main content area, minus the ~210px filter column | 2 |
+| Tablet | 550px | `--viewportMedium` | Full width of the main content area, minus the ~210px filter column | 2 |
 | Desktop | 1024px | `--viewportLarge` | Full width of the main content area, minus the ~240px filter column | 3 |
 | Wide | 1500px | — (custom value, not a standard Sharetribe name) | Same as Desktop | 4 |
 
