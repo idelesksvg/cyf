@@ -196,27 +196,20 @@ The page also contains a **"Creative Implementation / Testing"** section (Rubik'
 
 ## 9. Responsive Breakpoints — Search Results Card Grid
 
-The card grid on browse/search views (e.g. [Architecture spaces](https://spaces.magnificenth.com/s?pub_categoryLevel1=architecture)) is mobile-first. The values below were read directly from the live production CSS on 12 November 2026 and are the de facto standard until they are formalized in the Figma library.
+The card grid on browse/search views (e.g. [Architecture spaces](https://spaces.magnificenth.com/s?pub_categoryLevel1=architecture)) is mobile-first and scales from 1 to 4 columns as the viewport widens. **This table is the design rule. The implementation must follow it**, not the other way round.
 
-**Standard grid** (`SearchResultsPanel_listingCards`, search results without the map):
+| Breakpoint | Min-width | Sharetribe common name | Container width | Card-grid columns |
+|---|---|---|---|---|
+| Mobile | 320px | — (base styles, no media query) | Full width of the main content area (filters in mobile modal, no side column) | 1 |
+| Tablet | 550px | `--viewportSmall` | Full width of the main content area, minus the ~210px filter column | 2 |
+| Desktop | 1024px | `--viewportLarge` | Full width of the main content area, minus the ~240px filter column | 3 |
+| Wide | 1500px | — (custom value, not a standard Sharetribe name) | Same as Desktop | 4 |
 
-| Breakpoint | Min-width | Card-grid columns |
-|---|---|---|
-| Mobile | 320px (base styles, no media query) | 1 |
-| Tablet | 550px | 2 |
-| Desktop | 1024px | 4 |
+> **Naming note:** 320px is the conventional minimum supported mobile viewport, applied via base styles before any media query. The labels "Mobile / Tablet / Desktop / Wide" are descriptive names for this doc. The Sharetribe column gives the template's custom-media-query names (`src/styles/customMediaQueries.css`) for the same min-widths.
 
-**Map variant** (`SearchResultsPanel_listingCardsMapVariant`, search results shown next to the map):
+> **To check by the developer (live site, 12 Nov 2026):** the production CSS (`SearchResultsPanel_listingCards`) goes straight from 2 to **4 columns at 1024px** and has no 1500px breakpoint, so the 3-column step is missing. When results sit next to the map (`SearchResultsPanel_listingCardsMapVariant`), the live grid shows 1 column, 2 from 1024px and 3 from 1921px; this map layout is not specified by design yet. The code should be updated to the table above.
 
-| Breakpoint | Min-width | Card-grid columns |
-|---|---|---|
-| Mobile / Tablet | base styles | 1 |
-| Desktop | 1024px | 2 |
-| Very wide | 1921px | 3 |
-
-> **Notes:** 320px is the conventional minimum supported mobile viewport; 550px, 1024px and 1921px are the media queries found in the live CSS. The labels "Mobile / Tablet / Desktop" are descriptive names added for this doc. An earlier version of this section listed 3 columns from 1024px and 4 columns from 1500px; the live CSS has no 1500px breakpoint and goes straight to 4 columns at 1024px. The **Responsive Breakpoints** page in the Figma library still shows the earlier values (768px / 3 columns / 1500px) and should be updated to match.
-
-**When designing a new view:** for any card grid (search results, collections, editions), follow the standard progression — 1 column by default, 2 columns from 550px, 4 columns from 1024px — or the map variant when results sit next to a map. Do not introduce additional breakpoints or column counts without first checking the live implementation and updating the Figma library so this section stays accurate.
+**When designing a new view:** for any card grid (search results, collections, editions), follow this mobile-first progression — 1 column by default, 2 columns from 550px, 3 columns from 1024px, and 4 columns from 1500px on very wide screens. Do not introduce additional breakpoints or column counts without updating the Figma library's **Responsive Breakpoints** page and this section together.
 
 ---
 
@@ -308,7 +301,7 @@ The WordPress homepage design in the [Wordpress-Website](https://www.figma.com/d
 
 ### Spacing & grid — not yet defined
 
-The library does **not** yet define a spacing scale, corner-radius tokens, or a layout grid as variables. The card-grid breakpoints in Section 9 are the only documented layout rule, derived from the live site.
+The library does **not** yet define a spacing scale, corner-radius tokens, or a layout grid as variables. The card-grid breakpoints in Section 9 are the only documented layout rule.
 
 **When designing a new view:** reuse the components above before building anything custom. For category filters, always use `Button Category`. Do not invent ad-hoc spacing or component conventions in this document. If a spacing scale, grid, or new component is needed, define it in the Figma library first, then mirror it here so the doc stays a faithful reflection of the source of truth.
 
@@ -328,4 +321,4 @@ When asked to design or review a view, apply this checklist:
 8. Does any elevated surface reuse the documented shadow token instead of a new one?
 9. Is the correct logo variant (Light/Dark/Multi) used for the background it sits on, pulled from the Figma library rather than recreated?
 10. Have you reused the library's existing components (Section 10) first — `Button Category` for every category filter, no "previous" components from the platform file — and raised any missing spacing/grid/component need to add to the Figma library rather than improvising it?
-11. Does any card grid follow the responsive breakpoints in Section 9 (1 column by default, 2 from 550px, 4 from 1024px; map variant: 2 from 1024px, 3 from 1921px)?
+11. Does any card grid follow the responsive breakpoints in Section 9 (1 column by default, 2 from 550px, 3 from 1024px, 4 from 1500px)?
