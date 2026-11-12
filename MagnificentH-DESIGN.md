@@ -226,7 +226,7 @@ The library components sit under **🪜 Under Construction**. They are usable bu
 
 | Component | Variants | Notes |
 |---|---|---|
-| `Button item` | Type: Yellow, Black, Circled, Circled + F, Circled + B · State: Default, Hoover, Disabled | Main action button. Boolean props show or hide the back/forward arrows. |
+| `Button item` | Type: Yellow, Black, Circled, Circled + F, Circled + B · State: Default, Hover, Disabled | Main action button. Boolean props show or hide the back/forward arrows. |
 | `Button Category` | Status: Default, Hover, Selected · Color: Brown, Orange, Yellow, Blue, Green, Water Green | **The only category chip.** 50px high, width hugs the label, same size on desktop and mobile. Default = white with a black outline. Hover and Selected = filled with the category colour, outline in the same colour, black text. Pick the Color from the category mapping below. Replaces the former `Subcategory`, `Button Category / Mobile` and `Buttons Historical Style`. |
 | `Button Load more` | Device: Desktop, Mobile · State: Default, Hover | "LOAD MORE" button; Desktop is 198px wide, Mobile 343px. |
 | `See More` | Status: Default, Hover | "SEE MORE STORIES" button, desktop. |
@@ -268,7 +268,7 @@ Two ways to fix it: (1, recommended) map clean names to the real IDs in the web 
 
 ### Icons
 
-Search, Close, Exit, Create, Create Navbar, Message me, Bookmark, `Favorite` (status: Default, Selected, gold, brown), `Icon backward` / `Icon forward` (Default, Hoover), `Expand_down` (Down, Up), `Button Filter`. The **Old system** section holds earlier icons that must not be used for new work.
+Search, Close, Exit, Create, Create Navbar, Message me, Bookmark, `Favorite` (status: Default, Selected, gold, brown), `Icon backward` / `Icon forward` (Default, Hover), `Expand_down` (Down, Up), `Button Filter`. The **Old system** section holds earlier icons that must not be used for new work.
 
 Icons keep their base size in the library (for example `Exit` is 33×33); resize the instance where a screen needs it rather than changing the main component.
 
@@ -276,24 +276,24 @@ Icons keep their base size in the library (for example `Exit` is 33×33); resize
 
 | Component | Variants | Notes |
 |---|---|---|
-| `NavBar` | Desktop, Create, Bookmark, My Gallery | Platform top bar, 1440px. |
+| `NavBar` | Page: Desktop, Create, Bookmark, My Gallery | Platform top bar, 1440px. |
 | `Navbar / Mobile` | Mobile, Open, Search | Platform mobile bar with menu. |
-| `NavBar Mobile 3` | — | Mobile bar with back arrow, search and "Filter by". |
+| `NavBar Mobile / Back + Search + Filter` | — | Mobile bar with back arrow, search and "Filter by". |
 | `NavBar Mobile / Logo + Search + Filter` | — | Mobile bar with logo tile, search and "Filter by". |
 | `Footer / Desktop` | Color: White, Dark | 1440px. |
-| `Footer / Mobile` | color: White, Dark | 375px. |
+| `Footer / Mobile` | Color: White, Dark | 375px. |
 
 ### Components
 
 | Group | Components |
 |---|---|
-| Story cards | `Component Story / Desktop` (Default, Hover), `Component Story / Mobile`, `Component Story Vertical M`, `Example Story / Desktop`, `Component XL` |
+| Story cards | `Component Story / Desktop` (Status: Default, Hover), `Component Story / Mobile`, `Component Story Vertical M`, `Example Story / Desktop` (Status: Default, Hover), `Component XL` (Status: Default, Hover) |
 | Highlight cards | `Story Card / Selected for you`, `Story Card / Selected for you + Description` (orange and blue "Selected for you" blocks, reserved for upcoming use) |
-| Browse cards | `Component Browse / Desktop` (Default, Hoover), `Component Browse / Mobile` |
+| Browse cards | `Component Browse / Desktop` (Status: Default, Hover), `Component Browse / Mobile` |
 | Create flow | `Image Upload Section / Desktop`, `Image Upload Section / Mobile` |
-| Interactive category map | `Button Room` (Default, Hoover, You are here, Pin) and the Architecture, Fashion, Photography and Art building illustrations (Default, Hoover, You are here). A fourth Architecture state on this page is linked from another file, not from the library. |
+| Interactive category map | `Button Room` (Default, Hover, You are here, Pin) and the Architecture, Fashion, Photography and Art building illustrations (Default, Hover, You are here). A fourth Architecture state on this page is linked from another file, not from the library. |
 
-**Naming clean-up still to do.** Several variants still use "Hoover" for hover (`Button item`, `Icon backward` / `Icon forward`, `Component Browse / Desktop`, `Button Room` and the building illustrations), and some sets still use the default property name "Property 1". Use the names as they appear in the library until they are renamed; renaming a variant in the library keeps existing instances linked.
+**Naming convention.** Variant properties are named for what they control (`Status`, `State`, `Device`, `Color`, `Page`) and hover is always spelled "Hover". Give every new component a description in the library.
 
 ### Marketing website (magnificenth.com) — not yet in the library
 
