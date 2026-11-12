@@ -257,7 +257,21 @@ Each category has one colour from the palette (Section 6). It is used for the ca
 
 > **Accessibility notes.** Chip labels are black on every colour. Black on Brown has a contrast of 3.8:1, below the 4.5:1 that WCAG AA asks for 16px text; all other colours pass. On Water Green, the outline and fill are very close to white (1.1:1), so a hovered or selected Venues chip relies on its fill alone to stand out. Revisit both if accessibility becomes a requirement.
 >
-> **Live site (spaces.magnificenth.com), checked 12 Nov 2026.** Category IDs in the code: Design = `interior-design`, Culture = `lifestyle`, Gardens & Landscapes = `outdoor-garden`, Icons = `Centennial`, Venues = `dining`. The search-page chips match this table, with three small differences to fix in the code: Art chips use Water Green `#D5FAE9` instead of Green; Fashion and Music use `#FF4F02` instead of Orange `#F94700`; Science uses `#3785E9` (and some map shapes `#3582E4`) instead of Blue `#3685EA`.
+#### Category IDs (platform)
+
+Five categories have a Sharetribe ID that differs from their name, and the ID shows in the search address (`/s?pub_categoryLevel1=<ID>`). Sharetribe IDs can't be changed once created.
+
+| Category | Current ID | Clean name to use in addresses |
+|---|---|---|
+| Design | `interior-design` | `design` |
+| Culture | `lifestyle` | `culture` |
+| Gardens & Landscapes | `outdoor-garden` | `gardens` |
+| Icons | `Centennial` | `icons` |
+| Venues | `dining` | `venues` |
+
+Two ways to fix it: (1, recommended) map clean names to the real IDs in the web app, so addresses use `design`, `culture` etc. with no data change; (2) recreate the categories in Console with clean IDs and migrate every listing. Details in the developer note "MagnificentH — Category IDs". When naming a category anywhere (design, copy, links), use the name, never the ID.
+
+> **Live site (spaces.magnificenth.com), checked 12 Nov 2026.** The search-page chips match the colour table, with three small differences to fix in the code: Art chips use Water Green `#D5FAE9` instead of Green; Fashion and Music use `#FF4F02` instead of Orange `#F94700`; Science uses `#3785E9` (and some map shapes `#3582E4`) instead of Blue `#3685EA`.
 
 ### Icons
 
