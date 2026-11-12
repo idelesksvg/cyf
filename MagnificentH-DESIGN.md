@@ -268,7 +268,7 @@ Two ways to fix it: (1, recommended) map clean names to the real IDs in the web 
 
 ### Icons
 
-Search, Close, Exit, Create, Create Navbar, Message me, Bookmark, `Favorite` (status: Default, Selected, gold, brown), `Icon backward` / `Icon forward` (Default, Hover), `Expand_down` (Down, Up), `Button Filter`. The **Old system** section holds earlier icons that must not be used for new work.
+Search, Close, Exit, Create, Create Navbar, Message me, Bookmark, `Favorite` (status: Default, Selected, gold, brown), `Icon backward` / `Icon forward` (Default, Hover), `Expand_down` (Down, Up), `Button Filter`, `Image placeholder` (grey picture placeholder, scales to any size). The **Old system** section holds earlier icons, all named "old / …", that must not be used for new work.
 
 Icons keep their base size in the library (for example `Exit` is 33×33); resize the instance where a screen needs it rather than changing the main component.
 
