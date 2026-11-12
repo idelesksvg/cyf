@@ -196,26 +196,90 @@ The page also contains a **"Creative Implementation / Testing"** section (Rubik'
 
 ## 9. Responsive Breakpoints — Search Results Card Grid
 
-The card grid on browse/search views (e.g. [Architecture spaces](https://spaces.magnificenth.com/s?pub_categoryLevel1=architecture)) is mobile-first and scales from 1 to 4 columns as the viewport widens. This is reverse-engineered from the live implementation (`SearchResultsPanel_listingCards` grid) and is the current de facto standard until it is formalized in the Figma library.
+The card grid on browse/search views (e.g. [Architecture spaces](https://spaces.magnificenth.com/s?pub_categoryLevel1=architecture)) is mobile-first. The values below were read directly from the live production CSS on 12 November 2026 and are the de facto standard until they are formalized in the Figma library.
 
-| Breakpoint | Min-width | Sharetribe common name | Container width | MagnificentH card-grid columns |
-|---|---|---|---|---|
-| Mobile | 320px | — (base styles, no media query) | Full width of the main content area (filters in mobile modal, no side column) | 1 |
-| Tablet | 550px | `--viewportMedium` | Full width of the main content area, minus the ~210px filter column | 2 |
-| Desktop | 1024px | `--viewportLarge` | Full width of the main content area, minus the ~240px filter column | 3 |
-| Wide | 1500px | — (custom value, not a standard Sharetribe name) | Same as Desktop | 4 |
+**Standard grid** (`SearchResultsPanel_listingCards`, search results without the map):
 
-> **Naming note (pending team confirmation):** the **min-width values** (550px, 1024px, 1500px) come directly from the live production CSS (`SearchResultsPanel_listingCards`); 320px is the conventional minimum supported mobile viewport, applied via base styles before any media query. Note the grid actually reaches 2 columns slightly earlier, at 550px (`--viewportSmall`) — 550px is shown here as it's the more common "tablet" reference point and the column count doesn't change again until 1024px. The **breakpoint labels** "Mobile / Tablet / Desktop / Wide" are descriptive names added for this doc, not pulled from source. The **Sharetribe common name** column reflects this template's conventional custom-media-query names (`src/styles/customMediaQueries.css`) for these same min-widths. 
+| Breakpoint | Min-width | Card-grid columns |
+|---|---|---|
+| Mobile | 320px (base styles, no media query) | 1 |
+| Tablet | 550px | 2 |
+| Desktop | 1024px | 4 |
 
-**When designing a new view:** for any card grid (search results, collections, editions), follow this mobile-first progression — 1 column by default, 2 columns from 550px, 3 columns from 1024px, and 4 columns from 1500px on very wide screens. Do not introduce additional breakpoints or column counts without first checking the live implementation and updating the Figma library so this table stays accurate.
+**Map variant** (`SearchResultsPanel_listingCardsMapVariant`, search results shown next to the map):
+
+| Breakpoint | Min-width | Card-grid columns |
+|---|---|---|
+| Mobile / Tablet | base styles | 1 |
+| Desktop | 1024px | 2 |
+| Very wide | 1921px | 3 |
+
+> **Notes:** 320px is the conventional minimum supported mobile viewport; 550px, 1024px and 1921px are the media queries found in the live CSS. The labels "Mobile / Tablet / Desktop" are descriptive names added for this doc. An earlier version of this section listed 3 columns from 1024px and 4 columns from 1500px; the live CSS has no 1500px breakpoint and goes straight to 4 columns at 1024px. The **Responsive Breakpoints** page in the Figma library still shows the earlier values (768px / 3 columns / 1500px) and should be updated to match.
+
+**When designing a new view:** for any card grid (search results, collections, editions), follow the standard progression — 1 column by default, 2 columns from 550px, 4 columns from 1024px — or the map variant when results sit next to a map. Do not introduce additional breakpoints or column counts without first checking the live implementation and updating the Figma library so this section stays accurate.
 
 ---
 
-## 10. Spacing, Grid & Components — Not Yet Defined
+## 10. Components, Spacing & Grid
 
-The Figma library currently documents **brand identity only** (colors, typography, shared shadow effect, and logo lockups). It does **not** yet define a spacing scale, layout grid, or a UI component library (buttons, inputs, cards, etc.) — aside from the card-grid breakpoints in Section 9, which were derived from the live site.
+### Where components live
 
-**When designing a new view:** until these are added to the Figma library, do not invent ad-hoc spacing or component conventions in this document. If a spacing scale, grid, or component set is needed, define it in Figma first (e.g. as a new page in the MagnificentH library), then mirror it here so the doc stays a faithful reflection of the source of truth.
+- **MagnificentH library** — the only source for components used in new work. Everything listed below is published from it.
+- **[Magnificent Platform](https://www.figma.com/design/EIN5k2bE3SmkUQgcrCnqhT/Magnificent-Platform) file** — the product screens. Its screens use the library components. A few local components remain there on purpose as **previous versions**, named "… — previous (…)" (for example the story cards with the gold Favorite star, and the category chip with a coloured square). They are kept for reference only: do not use them in new work.
+
+The library components sit under **🪜 Under Construction**. They are usable but still evolving, so check the library for the latest version before building. (Inventory as of 12 November 2026.)
+
+### Buttons & inputs
+
+| Component | Variants | Notes |
+|---|---|---|
+| `Button item` | Type: Yellow, Black, Circled, Circled + F, Circled + B · State: Default, Hoover, Disabled | Main action button. Boolean props show or hide the back/forward arrows. |
+| `Button Category` | Status: Default, Hover, Selected | **The only category chip.** 50px high, width hugs the label, same size on desktop and mobile. Default = white with a black outline; Hover and Selected = solid Brown with white text. Replaces the former `Subcategory`, `Button Category / Mobile` and `Buttons Historical Style`. |
+| `Button Load more` | Device: Desktop, Mobile · State: Default, Hover | "LOAD MORE" button; Desktop is 198px wide, Mobile 343px. |
+| `See More` | Status: Default, Hover | "SEE MORE STORIES" button, desktop. |
+| `Button More / Mobile` | Status: Default, Selected | "SEE MORE STORIES" button, mobile (343px). |
+| `SearchBar` | Status: Default, Typing | |
+| `TabsList` / `TabsList Mobile` | TabsList — State: 1, 2, 3 | Step tabs of the Create flow (Add details · Browse photos · Write your story). |
+| `Block` | — | "Historical style" picker block (chips such as Eclectic, Neo-Renaissance). |
+
+### Icons
+
+Search, Close, Exit, Create, Create Navbar, Message me, Bookmark, `Favorite` (status: Default, Selected, gold, brown), `Icon backward` / `Icon forward` (Default, Hoover), `Expand_down` (Down, Up), `Button Filter`. The **Old system** section holds earlier icons that must not be used for new work.
+
+Icons keep their base size in the library (for example `Exit` is 33×33); resize the instance where a screen needs it rather than changing the main component.
+
+### Footer / NavBar
+
+| Component | Variants | Notes |
+|---|---|---|
+| `NavBar` | Desktop, Create, Bookmark, My Gallery | Platform top bar, 1440px. |
+| `Navbar / Mobile` | Mobile, Open, Search | Platform mobile bar with menu. |
+| `NavBar Mobile 3` | — | Mobile bar with back arrow, search and "Filter by". |
+| `NavBar Mobile / Logo + Search + Filter` | — | Mobile bar with logo tile, search and "Filter by". |
+| `Footer / Desktop` | Color: White, Dark | 1440px. |
+| `Footer / Mobile` | color: White, Dark | 375px. |
+
+### Components
+
+| Group | Components |
+|---|---|
+| Story cards | `Component Story / Desktop` (Default, Hover), `Component Story / Mobile`, `Component Story Vertical M`, `Example Story / Desktop`, `Component XL` |
+| Highlight cards | `Story Card / Selected for you`, `Story Card / Selected for you + Description` (orange and blue "Selected for you" blocks, reserved for upcoming use) |
+| Browse cards | `Component Browse / Desktop` (Default, Hoover), `Component Browse / Mobile` |
+| Create flow | `Image Upload Section / Desktop`, `Image Upload Section / Mobile` |
+| Interactive category map | `Button Room` (Default, Hoover, You are here, Pin) and the Architecture, Fashion, Photography and Art building illustrations (Default, Hoover, You are here). A fourth Architecture state on this page is linked from another file, not from the library. |
+
+**Naming clean-up still to do.** Several variants still use "Hoover" for hover (`Button item`, `Icon backward` / `Icon forward`, `Component Browse / Desktop`, `Button Room` and the building illustrations), and some sets still use the default property name "Property 1". Use the names as they appear in the library until they are renamed; renaming a variant in the library keeps existing instances linked.
+
+### Marketing website (magnificenth.com) — not yet in the library
+
+The WordPress homepage design in the [Wordpress-Website](https://www.figma.com/design/aHtOW36Wk1uUji87FDoN2Q/Wordpress-Website) file uses local components that have no library equivalent yet: a marketing site header (the library `NavBar` is the platform bar), value card, experience row, museum card, step card, creator card, institution card and article card. It also relies on a hard black offset shadow (8px / 10px, no blur), an eyebrow text style (Alata 14, +2.4 tracking, uppercase, Brown) and Fraunces highlight sizes, none of which exist in the library. These are candidates to add.
+
+### Spacing & grid — not yet defined
+
+The library does **not** yet define a spacing scale, corner-radius tokens, or a layout grid as variables. The card-grid breakpoints in Section 9 are the only documented layout rule, derived from the live site.
+
+**When designing a new view:** reuse the components above before building anything custom. For category filters, always use `Button Category`. Do not invent ad-hoc spacing or component conventions in this document. If a spacing scale, grid, or new component is needed, define it in the Figma library first, then mirror it here so the doc stays a faithful reflection of the source of truth.
 
 ---
 
@@ -232,5 +296,5 @@ When asked to design or review a view, apply this checklist:
 7. Is the Error palette used only for error/validation states?
 8. Does any elevated surface reuse the documented shadow token instead of a new one?
 9. Is the correct logo variant (Light/Dark/Multi) used for the background it sits on, pulled from the Figma library rather than recreated?
-10. If a spacing/grid/component need arises, has it been raised to add to the Figma library rather than improvised?
-11. Does any card grid follow the responsive breakpoints in Section 9 (1 column by default, 2 from 768px, 3 from 1024px, 4 from 1500px)?
+10. Have you reused the library's existing components (Section 10) first — `Button Category` for every category filter, no "previous" components from the platform file — and raised any missing spacing/grid/component need to add to the Figma library rather than improvising it?
+11. Does any card grid follow the responsive breakpoints in Section 9 (1 column by default, 2 from 550px, 4 from 1024px; map variant: 2 from 1024px, 3 from 1921px)?
