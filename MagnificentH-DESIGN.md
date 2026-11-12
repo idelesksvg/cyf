@@ -234,13 +234,30 @@ The library components sit under **🪜 Under Construction**. They are usable bu
 | Component | Variants | Notes |
 |---|---|---|
 | `Button item` | Type: Yellow, Black, Circled, Circled + F, Circled + B · State: Default, Hoover, Disabled | Main action button. Boolean props show or hide the back/forward arrows. |
-| `Button Category` | Status: Default, Hover, Selected | **The only category chip.** 50px high, width hugs the label, same size on desktop and mobile. Default = white with a black outline; Hover and Selected = solid Brown with white text. Replaces the former `Subcategory`, `Button Category / Mobile` and `Buttons Historical Style`. |
+| `Button Category` | Status: Default, Hover, Selected · Color: Brown, Orange, Yellow, Blue, Green, Water Green | **The only category chip.** 50px high, width hugs the label, same size on desktop and mobile. Default = white with a black outline. Hover and Selected = filled with the category colour, outline in the same colour, black text. Pick the Color from the category mapping below. Replaces the former `Subcategory`, `Button Category / Mobile` and `Buttons Historical Style`. |
 | `Button Load more` | Device: Desktop, Mobile · State: Default, Hover | "LOAD MORE" button; Desktop is 198px wide, Mobile 343px. |
 | `See More` | Status: Default, Hover | "SEE MORE STORIES" button, desktop. |
 | `Button More / Mobile` | Status: Default, Selected | "SEE MORE STORIES" button, mobile (343px). |
 | `SearchBar` | Status: Default, Typing | |
 | `TabsList` / `TabsList Mobile` | TabsList — State: 1, 2, 3 | Step tabs of the Create flow (Add details · Browse photos · Write your story). |
 | `Block` | — | "Historical style" picker block (chips such as Eclectic, Neo-Renaissance). |
+
+#### Category colours
+
+Each category has one colour from the palette (Section 6). It is used for the category's chips (`Button Category`, Color property), its building on the interactive map, and any other category accent.
+
+| Category | Color | Hex |
+|---|---|---|
+| Architecture, Cinema | Brown | `#BD3D00` |
+| Fashion, Music | Orange | `#F94700` |
+| Design, Photography | Yellow | `#FEBD27` |
+| Culture, Science | Blue | `#3685EA` |
+| Art, Gardens & Landscapes, Icons | Green | `#009448` |
+| Venues | Water Green | `#D5FAE9` |
+
+> **Accessibility notes.** Chip labels are black on every colour. Black on Brown has a contrast of 3.8:1, below the 4.5:1 that WCAG AA asks for 16px text; all other colours pass. On Water Green, the outline and fill are very close to white (1.1:1), so a hovered or selected Venues chip relies on its fill alone to stand out. Revisit both if accessibility becomes a requirement.
+>
+> **Live site (spaces.magnificenth.com), 12 Nov 2026:** the search-page chips do not all follow this table yet. Art uses Water Green; Design, Culture, Gardens, Icons and Venues show a default `#E4572E`; Fashion and Music use `#FF4F02` instead of Orange `#F94700`; Science uses `#3785E9`. The code should be updated to the colours above.
 
 ### Icons
 
